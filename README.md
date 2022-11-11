@@ -12,6 +12,8 @@ Python 3.6 - 3.9 (3.10 not supported)
 
 `pip install robotframework-ride` - install robot framework test runner
 
+*** if you have Python > 3.9, do not install it, use VSCode plugin to run tests (Robot Framework Language Server)
+
 ### -> Install selenium library and webdriver
 
 `pip install robotframework-seleniumlibrary` - install selenium library for browser automation

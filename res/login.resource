@@ -4,6 +4,7 @@ Documentation       This is a resource file, that can contain variables and keyw
 
 # Library    CustomLibrary.py
 Library             SeleniumLibrary
+Library    OperatingSystem
 
 
 *** Variables ***
@@ -33,5 +34,5 @@ Welcome Page Should Be Open For
     Element Should Contain    class=AccountInfo__username    ${username}
 
 Login Should Fail
-    Wait Until Page Contains Element    class=LogIn__error    1s
-    Element Should Contain    class=LogIn__error    Wrong username or password
+    ${message}=    Handle Alert    accept
+    Should Be Equal    ${message}    Wrong username or password
