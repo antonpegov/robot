@@ -1,21 +1,14 @@
 *** Settings ***
-Documentation       This is a resource file, that can contain variables and keywords.
-...                 Keywords defined here can be used where this Keywords.resource in loaded.
-
-# Library    CustomLibrary.py
 Library             SeleniumLibrary
-Library    OperatingSystem
-
 
 *** Variables ***
-${BROWSER}      chrome
-${URL}          http://104.248.166.249
-
 
 *** Keywords ***
 Open Browser To Login Page
-    Open Browser    ${URL}    ${BROWSER}
+    [Arguments]  ${browser}  ${url}    
+    Open Browser  ${url}  ${browser}
     Title Should Be    React App
+    
 
 Input Username
     [Arguments]    ${username}
@@ -26,9 +19,10 @@ Input Password
     Input Text    id=pass    ${password}
 
 Submit Credentials
+    [Arguments]
     Click Button    class=LogIn__buttons__buttonLog
 
-Welcome Page Should Be Open For
+Welcome Page Should Be Open
     [Arguments]    ${username}
     Wait Until Page Contains Element    class=AccountInfo__username    1s
     Element Should Contain    class=AccountInfo__username    ${username}
